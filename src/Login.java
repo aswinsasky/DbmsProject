@@ -130,7 +130,7 @@ public class Login extends javax.swing.JFrame {
             temp=1;
             if(rs.getString("userRule").equals("Admin")){
                 setVisible(false);
-                new AdminDashboard().setVisible(true);
+                new AdminDashboard(username).setVisible(true);
             }
             else{
                 setVisible(false);
