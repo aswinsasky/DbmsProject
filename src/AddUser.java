@@ -2,13 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.*;
 /**
  *
  * @author AKHIL JOSEPH
  */
 public class AddUser extends javax.swing.JFrame {
-
+    public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
+    public String mobileNumberPattern = "^[0-9]*$";
+    public int checkUsername = 0;
     /**
      * Creates new form AddUser
      */
