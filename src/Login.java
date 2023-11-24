@@ -128,7 +128,7 @@ public class Login extends javax.swing.JFrame {
         ResultSet rs = st.executeQuery("select * from appuser where username='"+username+"' and password='"+password+"'");
         while(rs.next()){
             temp=1;
-            if(rs.getString("userRule").equals("Admin")){
+            if(rs.getString("userRole").equals("Admin")){
                 setVisible(false);
                 new AdminDashboard(username).setVisible(true);
             }
