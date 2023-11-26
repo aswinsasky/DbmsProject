@@ -1,3 +1,4 @@
+import dao.ConnectionProvider;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.awt.event.*;
@@ -8,7 +9,7 @@ import java.awt.event.*;
  */
 public class AddMedicine extends javax.swing.JFrame {
     
-    public String numberPattern = "^[0-9]'$";
+    public String numberPattern = "^[0-9]*$";
     /**
      * Creates new form AddMedicine
      */
@@ -106,7 +107,7 @@ public class AddMedicine extends javax.swing.JFrame {
         getContentPane().add(txtPricePerUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 145, 300, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profileDashboard.png"))); // NOI18N
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +160,7 @@ public class AddMedicine extends javax.swing.JFrame {
         }else{
             try{
             Connection con = ConnectionProvider.getCon();
-            PreparedStatement ps = con.prepareStatement("insert into medicine(uniqueId,name,companyName,quantiy,price) values(?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into medicine(uniqueId,name,companyName,quantity,price) values(?,?,?,?,?)");
             ps.setString(1,uniqueId);
             ps.setString(2, name);
             ps.setString(3, CompanyName);
