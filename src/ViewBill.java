@@ -1,4 +1,5 @@
 
+import common.OpenPdf;
 import dao.ConnectionProvider;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +22,7 @@ public class ViewBill extends javax.swing.JFrame {
      */
     public ViewBill() {
         initComponents();
-        setLocation(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -76,11 +77,10 @@ public class ViewBill extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 120, 836, 374));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 120, 830, 380));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/all_pages_background.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 900, 500));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
