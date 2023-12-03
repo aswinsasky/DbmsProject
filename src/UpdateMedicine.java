@@ -9,7 +9,7 @@ import java.sql.*;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
+/*
  *
  * @author avinash
  */
@@ -47,7 +47,7 @@ public class UpdateMedicine extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtQuantity = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtAddQuantity = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtPricePerUnit = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -117,8 +117,8 @@ public class UpdateMedicine extends javax.swing.JFrame {
         jLabel6.setText("Add Quantity");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 325, -1, -1));
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 322, 151, -1));
+        txtAddQuantity.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        getContentPane().add(txtAddQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 322, 151, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Price Per Unit");
@@ -157,7 +157,53 @@ public class UpdateMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPricePerUnitActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
+         String uniqueId = txtMedicineId.getText();
+         String name = txtName.getText();
+         String companyName = txtCompanyName.getText();
+         String quantity = txtQuantity.getText();
+         String price = txtPricePerUnit.getText();
+         String addQuantity = txtAddQuantity.getText();
+         
+         int totalQuantity =0;
+         if(addQuantity.equals("")){
+             totalQuantity =Integer.parseInt(quantity);
+         }else{
+             totalQuantity = Integer.parseInt(quantity) + Integer.parseInt(addQuantity);
+         }
+         
+         if(uniqueId.equals("")){
+             JOptionPane.showMessageDialog(null,"Medicine Id field is required.");
+         }else if(name.equals("")){
+            JOptionPane.showMessageDialog(null,"Medicine Name field is required.");
+         }else if(companyName.equals("")){
+            JOptionPane.showMessageDialog(null,"Company Name field is required.");
+         }else if(!addQuantity.matches(numberPattern)){
+            JOptionPane.showMessageDialog(null,"Add Quantity filed is invalid.");
+         }else if(price.equals("")){
+            JOptionPane.showMessageDialog(null,"Price Per Unit field is required.");
+         }else if(!price.matches(numberPattern)){
+            JOptionPane.showMessageDialog(null,"Price Per Unit Field is invalid");
+         }else{
+             try{
+                 Connection con = ConnectionProvider.getCon();
+                 PreparedStatement ps = con.prepareStatement("update medicine set name=?,companyName=?,quantity=?,price=? where uniqueId=?");
+                 ps.setString(1, name);
+                 ps.setString(2,companyName);
+                 ps.setInt(3, totalQuantity);
+                 ps.setString(4,price);
+                 ps.setInt(5,Integer.parseInt(uniqueId));
+                 ps.executeUpdate();
+                 JOptionPane.showInternalMessageDialog(null,"Medicine Updated Successfully");
+                 setVisible(false);
+                 new UpdateMedicine().setVisible(true);
+                 
+             }
+             catch(Exception e){
+                 JOptionPane.showMessageDialog(null, e);
+            }
+             
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -247,7 +293,7 @@ public class UpdateMedicine extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txtAddQuantity;
     private javax.swing.JTextField txtCompanyName;
     private javax.swing.JTextField txtMedicineId;
     private javax.swing.JTextField txtName;
