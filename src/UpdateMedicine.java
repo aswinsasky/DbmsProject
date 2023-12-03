@@ -2,6 +2,7 @@
 import dao.ConnectionProvider;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.sql.ResultSet;
 
 
 /*
@@ -15,7 +16,7 @@ import java.sql.*;
  */
 public class UpdateMedicine extends javax.swing.JFrame {
     
-    public String numberPattern = "^[0-9]^$";
+    public String numberPattern = "^[0-9]*$";
 
     /**
      * Creates new form UpdateMedicine
@@ -78,7 +79,7 @@ public class UpdateMedicine extends javax.swing.JFrame {
         getContentPane().add(txtMedicineId, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 72, 300, 27));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         jButton2.setText("Search");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +119,11 @@ public class UpdateMedicine extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 325, -1, -1));
 
         txtAddQuantity.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtAddQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddQuantityActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtAddQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 322, 151, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -133,7 +139,7 @@ public class UpdateMedicine extends javax.swing.JFrame {
         getContentPane().add(txtPricePerUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 154, 300, -1));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/yes.png"))); // NOI18N
         jButton3.setText("Update");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +250,10 @@ public class UpdateMedicine extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtAddQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddQuantityActionPerformed
 
     /**
      * @param args the command line arguments
